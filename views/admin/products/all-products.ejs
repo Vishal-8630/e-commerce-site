@@ -1,0 +1,33 @@
+<%- include('../../shared/includes/head', { pageTitle: 'All Products'}) %>
+<link rel="stylesheet" href="/styles/products.css">
+<script src="/scripts/delete-product.js" defer></script>
+</head>
+<body>
+
+<%- include('../../shared/includes/header') %>
+
+<main>
+    <h1>Product Administration</h1>
+
+    <section>
+        <h2>Manage Products</h2>
+        <p>
+            <a href="/admin/products/new" class="btn">Add Product</a>
+        </p>
+    </section>
+
+    <section>
+        <% if(!products || products.length === 0) {%>
+            <p>No Product Found</p>
+        <% } %>
+        <ul id="products-grid">
+            <% for(const product of products ) { %>
+                <li>
+                    <%- include('../../shared/includes/product-item', {product: product}) %>
+                </li>
+            <% } %>
+        </ul>
+    </section>
+</main>
+
+<%- include('../../shared/includes/footer') %>
